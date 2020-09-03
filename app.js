@@ -1,16 +1,69 @@
-const validator = require("validator");
+const yargs = require("yargs");
 const chalk = require("chalk");
 const getNotes = require("./notes.js");
+const { describe } = require("yargs");
 
-const msg = getNotes();
+// customize the yargs version
 
-console.log(msg);
+yargs.version("1.1.0");
 
-console.log(validator.isEmail("karan@example.com"));
-console.log(validator.isURL("www.ngkaran.com"));
+// console.log(process.argv);
+// console.log(yargs.argv);
 
-const greenMsg = chalk.bold.green("Success!");
-console.log(greenMsg);
+// create add command
+
+yargs.command({
+  command: "add",
+  describe: "Add new note",
+  handler: function () {
+    console.log("Adding new note");
+  },
+});
+
+// Create Remove command
+
+yargs.command({
+  command: "remove",
+  describe: "remove a note",
+  handler: function () {
+    console.log("Removing the note");
+  },
+});
+
+// Create List command
+
+yargs.command({
+  command: "list",
+  describe: "List your note",
+  handler: function () {
+    console.log("Listout the note");
+  },
+});
+
+// Create read command
+yargs.command({
+  command: "read",
+  describe: "read your note",
+  handler: function () {
+    console.log("reading the note");
+  },
+});
+console.log(yargs.argv);
+
+// if (command === "add") {
+// } else if (command === "remove") {
+// }
+
+// below code is for Chalk and validator reference
+// const msg = getNotes();
+
+// console.log(msg);
+
+// console.log(validator.isEmail("karan@example.com"));
+// console.log(validator.isURL("www.ngkaran.com"));
+
+// const greenMsg = chalk.bold.red("Success!");
+// console.log(greenMsg);
 
 // const fs = require("fs");
 
